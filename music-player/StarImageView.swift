@@ -29,20 +29,10 @@ class StarImageView: UIImageView {
     
     @objc private func touchAction(_ sender: UITapGestureRecognizer) {
         // 改資料 star 再呼叫更改 view
-        print(self.starIndex)
+        playerStatus.nowPlaying!.starCounts = self.starIndex
+        print(playerStatus.nowPlaying!.starCounts)
         // 設定 music star
-    }
-    
-    func setStar(bool: Bool) {
-        if bool {
-            self.image = UIImage(systemName: "star.fill")
-        } else {
-            self.image = UIImage(systemName: "star")
-        }
-    }
-    
-    func setStarsDisplay(counts: Int) {
-        // 從 musicStatus 改
+        MusicViewController.setStarCounts(counts: self.starIndex)
     }
 
 }

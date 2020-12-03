@@ -28,6 +28,9 @@ class MusicViewController: UIViewController {
         musicImageView.image = UIImage(named: playerStatus.nowPlaying!.songImage)
         songLabel.text = playerStatus.nowPlaying!.songName
         singerLabel.text = playerStatus.nowPlaying!.singerName
+        MusicViewController.setStarCounts(counts: playerStatus.nowPlaying!.starCounts)
+        
+        print(playerStatus.nowPlaying!.starCounts)
     }
     
     func initMusicImage() {
@@ -44,9 +47,18 @@ class MusicViewController: UIViewController {
             let star = StarImageView(image: UIImage(systemName: "star")!, starIndex: i)
             star?.frame = CGRect(x: (i-1)*26, y: 0, width: 18, height: 18)
             starsUIView.addSubview(star!)
-            
             starArray.append(star!)
         }
+    }
+    
+    static func setStarCounts(counts: Int) {
+        starArray.forEach({
+            if $0.starIndex <= counts {
+                $0.image = UIImage(systemName: "star.fill")
+            } else {
+                $0.image = UIImage(systemName: "star")
+            }
+        })
     }
 
     @IBAction func back(_ sender: Any) {
