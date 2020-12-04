@@ -46,6 +46,9 @@ class SongCardView: UIView {
         imageView.addGestureRecognizer(gesture)
     }
     @objc private func touchAction(_ sender: UITapGestureRecognizer) {
+        guard self.songInfo != nil else {
+            return
+        }
         self.touchFunc(self.songInfo!)
         let index = musicQueue.firstIndex { (song) -> Bool in
             return song.songName == self.songInfo?.songName

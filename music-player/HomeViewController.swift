@@ -54,7 +54,6 @@ class HomeViewController: UIViewController {
          
         // music observer
         NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { (_) in
-            print("next")
             self.playNextSong()
             self.setNowPlayingView()
             NotificationCenter.default.post(name: Notification.Name("setMusicView"), object: nil)
@@ -127,7 +126,7 @@ class HomeViewController: UIViewController {
         
         // set touchable
         nowPlayingSheet.isUserInteractionEnabled = true
-        let gesture = UITapGestureRecognizer(target: nowPlayingSheet, action: #selector(self.toCurrentMusicPage))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.toCurrentMusicPage))
         nowPlayingSheet.addGestureRecognizer(gesture)
     }
 

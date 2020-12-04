@@ -34,7 +34,7 @@ class MusicViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(setMusicView), name: NSNotification.Name("setMusicView"), object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         // set view based on data
         setMusicView()
         setPlayBtn()
