@@ -64,7 +64,7 @@ class SongCardView: UIView {
         self.addSubview(singerNameLabel)
     }
     
-    final func setSongInfo(info: MusicData) {
+    final func setSongInfo(info: MusicData?) {
         songInfo = info
         setView()
     }

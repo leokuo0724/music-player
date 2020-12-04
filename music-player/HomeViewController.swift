@@ -18,7 +18,7 @@ var musicQueue: Array<MusicData> = [
 //    MusicData(songName: "想見你想見你想見妳", album: "想見你", songImage: "想見你想見你想見你", singerName: "八三夭", year: 2019),
 //    MusicData(songName: "重遊舊地", album: "重遊舊地", songImage: "重遊舊地", singerName: "吳汶芳", year: 2020)
 ]
-var recentlyPlayed: Array<MusicData?> = [ nil, nil, nil ]
+var recentlyPlayedArray: Array<MusicData?> = [ nil, nil, nil ]
 
 struct TopSinger {
     let singerName: String
@@ -78,7 +78,7 @@ class HomeViewController: UIViewController {
     }
     func initRecentlyCards() {
         let beginningX = 36
-        for (index, data) in recentlyPlayed.enumerated() {
+        for (index, data) in recentlyPlayedArray.enumerated() {
             let frame = CGRect(x: beginningX+index*158, y: 12, width: 142, height: 185)
             if let data = data {
                 recentlyPlayedUIView.addSubview(
@@ -90,6 +90,11 @@ class HomeViewController: UIViewController {
                 )
             }
             
+        }
+    }
+    func setRecentlyCardsInfo() {
+        for (index, card) in recentlyPlayedUIView.subviews.enumerated() {
+            (card as! SongCardView).setSongInfo(info: recentlyPlayedArray[index])
         }
     }
     func initMadeForYou() {
@@ -144,12 +149,11 @@ class HomeViewController: UIViewController {
             present(controller, animated: true, completion: nil) // set song
             setNowPlayingView()
             if let nextSong = playerStatus.nowPlaying {
-                playMusic(nextSong.songName)
+                playMusic(nextSong)
             }
         }
     }
     @objc func toCurrentMusicPage() {
-        
         if let controller = storyboard?.instantiateViewController(identifier: "MusicPage") as? MusicViewController,
            let _ = playerStatus.nowPlaying {
             present(controller, animated: true, completion: nil) // set song
@@ -157,14 +161,18 @@ class HomeViewController: UIViewController {
     }
     
     // play/pause music
-    func playMusic(_ resource: String) {
-        let fileUrl = Bundle.main.url(forResource: resource, withExtension: "mp3")!
+    func playMusic(_ resource: MusicData) {
+        let fileUrl = Bundle.main.url(forResource: resource.songName, withExtension: "mp3")!
         let playerItem = AVPlayerItem(url: fileUrl)
         playerStatus.duration = playerItem.asset.duration.seconds
         player.replaceCurrentItem(with: playerItem)
         player.play()
         playerStatus.isPlay = true
         setPlayBtn()
+        
+        // 加到最近歌曲
+        pushRecently(item: resource)
+        setRecentlyCardsInfo()
     }
     func resumeMusic() {
         player.play()
@@ -177,6 +185,18 @@ class HomeViewController: UIViewController {
         setPlayBtn()
     }
     
+    func pushRecently(item: MusicData) {
+        let isExist = recentlyPlayedArray.contains{(song) -> Bool in
+            song?.songName == item.songName && song?.singerName == item.singerName
+        }
+        if isExist == true {
+            recentlyPlayedArray = recentlyPlayedArray.filter { $0?.songName != item.songName }
+        } else {
+            recentlyPlayedArray.removeLast()
+        }
+        recentlyPlayedArray.insert(item, at: 0)
+        print(recentlyPlayedArray)
+    }
     func setNowPlayingView() {
         if let currentSong = playerStatus.nowPlaying {
             nowPlayingImage.image = UIImage(named: currentSong.songImage)
@@ -205,7 +225,7 @@ class HomeViewController: UIViewController {
             // deal with initial situation
             if playerStatus.nowPlaying == nil {
                 playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]
-                playMusic(playerStatus.nowPlaying!.songName)
+                playMusic(playerStatus.nowPlaying!)
                 setNowPlayingView()
             }
             resumeMusic()
@@ -228,7 +248,7 @@ class HomeViewController: UIViewController {
             }
             playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]
         }
-        playMusic(playerStatus.nowPlaying!.songName)
+        playMusic(playerStatus.nowPlaying!)
         setNowPlayingView()
     }
     
@@ -241,7 +261,7 @@ class HomeViewController: UIViewController {
         }
         playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]
         
-        playMusic(playerStatus.nowPlaying!.songName)
+        playMusic(playerStatus.nowPlaying!)
         setNowPlayingView()
     }
     
