@@ -64,6 +64,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(playPause), name: NSNotification.Name("playPause"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nextSong), name: NSNotification.Name("nextSong"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(playPrevSong), name: NSNotification.Name("prevSong"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(sortingMadeForUCards), name: NSNotification.Name("starsSorting"), object: nil)
     }
 
     func initTrendCards() {
@@ -100,6 +101,15 @@ class HomeViewController: UIViewController {
         for (index, data) in sortArr.enumerated() {
             let frame = CGRect(x: beginningX+index*158, y: 12, width: 142, height: 185)
             madeForUUIView.addSubview(SongCardView(frame: frame, songInfo: data, touchFunc: songViewTouchAction)!)
+        }
+    }
+    @objc func sortingMadeForUCards() {
+        let sortArr = madeForUUIView.subviews.sorted {
+            ($0 as! SongCardView).songInfo!.starCounts > ($1 as! SongCardView).songInfo!.starCounts
+        }
+        let beginningX = 36
+        for (index, element) in sortArr.enumerated() {
+            element.frame.origin.x = CGFloat(beginningX+index*158)
         }
     }
     func initNowPlayingSheet() {

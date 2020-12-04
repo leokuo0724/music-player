@@ -14,7 +14,9 @@ class SongCardView: UIView {
     var singerNameLabel: UILabel = UILabel()
     var songNameLabel: UILabel = UILabel()
     
-    init?(frame: CGRect, songInfo: MusicData?, touchFunc: @escaping (MusicData) -> Void) {
+    init?(frame: CGRect,
+          songInfo: MusicData?,
+          touchFunc: @escaping (MusicData) -> Void) {
         self.songInfo = songInfo
         self.touchFunc = touchFunc
         super.init(frame: frame)

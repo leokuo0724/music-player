@@ -32,6 +32,7 @@ class StarImageView: UIImageView {
         playerStatus.nowPlaying!.starCounts = self.starIndex
         // 設定 music star
         MusicViewController.setStarCounts(counts: self.starIndex)
+        NotificationCenter.default.post(name: Notification.Name("starsSorting"), object: nil)
     }
 
 }
