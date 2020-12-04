@@ -88,7 +88,7 @@ class MusicViewController: UIViewController {
         if playerStatus.playType == "repeat" {
             repeatBtn.alpha = 1
             shuffleBtn.alpha = 0.6
-        } else if playerStatus.playType == "suffle" {
+        } else if playerStatus.playType == "shuffle" {
             repeatBtn.alpha = 0.6
             shuffleBtn.alpha = 1
         } else {

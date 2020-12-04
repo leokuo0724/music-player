@@ -130,7 +130,6 @@ class HomeViewController: UIViewController {
         let gesture = UITapGestureRecognizer(target: nowPlayingSheet, action: #selector(self.toCurrentMusicPage))
         nowPlayingSheet.addGestureRecognizer(gesture)
     }
-    
 
     
     // click song view

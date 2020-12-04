@@ -47,6 +47,10 @@ class SongCardView: UIView {
     }
     @objc private func touchAction(_ sender: UITapGestureRecognizer) {
         self.touchFunc(self.songInfo!)
+        let index = musicQueue.firstIndex { (song) -> Bool in
+            return song.songName == self.songInfo?.songName
+        }
+        playerStatus.nowPlayIndex = index ?? 0
     }
     
     private func initSongNameLabel() {
