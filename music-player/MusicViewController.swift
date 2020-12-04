@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVFoundation
+
 var starArray: Array<StarImageView> = []
 
 class MusicViewController: UIViewController {
@@ -16,18 +18,21 @@ class MusicViewController: UIViewController {
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var singerLabel: UILabel!
     @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var slider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initMusicImage()
         initStars()
+        initSlider()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         // set view based on data
         setMusicView()
         setPlayBtn()
+        setSliderMinMax()
     }
     func initMusicImage() {
         musicView.layer.shadowOpacity = 0.4
@@ -45,7 +50,20 @@ class MusicViewController: UIViewController {
             starArray.append(star!)
         }
     }
-    
+    func initSlider() {
+        slider.setThumbImage(UIImage(named: "thumb"), for: .normal)
+        player.addPeriodicTimeObserver(forInterval: CMTimeMake(value:1, timescale: 1), queue: DispatchQueue.main, using: { (CMTime) in
+            if let _ = playerStatus.nowPlaying, playerStatus.isPlay {
+                let currentTime = player.currentTime().seconds
+                self.slider.value = Float(currentTime)
+            }
+            
+        })
+    }
+    func setSliderMinMax() {
+        slider.maximumValue = Float(playerStatus.duration)
+        slider.isContinuous = true
+    }
     func setMusicView() {
         musicImageView.image = UIImage(named: playerStatus.nowPlaying!.songImage)
         songLabel.text = playerStatus.nowPlaying!.songName
@@ -83,4 +101,9 @@ class MusicViewController: UIViewController {
         NotificationCenter.default.post(name: Notification.Name("nextSong"), object: nil)
         setMusicView()
     }
+    @IBAction func prevSong(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name("prevSong"), object: nil)
+        setMusicView()
+    }
+    
 }

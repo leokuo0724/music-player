@@ -61,6 +61,7 @@ class HomeViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(playPause), name: NSNotification.Name("playPause"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nextSong), name: NSNotification.Name("nextSong"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playPrevSong), name: NSNotification.Name("prevSong"), object: nil)
     }
 
     func initTrendCards() {
@@ -147,6 +148,7 @@ class HomeViewController: UIViewController {
     func playMusic(_ resource: String) {
         let fileUrl = Bundle.main.url(forResource: resource, withExtension: "mp3")!
         let playerItem = AVPlayerItem(url: fileUrl)
+        playerStatus.duration = playerItem.asset.duration.seconds
         player.replaceCurrentItem(with: playerItem)
         player.play()
         playerStatus.isPlay = true
@@ -212,6 +214,17 @@ class HomeViewController: UIViewController {
             }
             playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]
         }
+        playMusic(playerStatus.nowPlaying!.songName)
+        setNowPlayingView()
+    }
+    
+    @objc func playPrevSong() {
+        playerStatus.nowPlayIndex -= 1
+        if (playerStatus.nowPlayIndex < 0) {
+            playerStatus.nowPlayIndex = musicQueue.count - 1
+        }
+        playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]
+        
         playMusic(playerStatus.nowPlaying!.songName)
         setNowPlayingView()
     }
