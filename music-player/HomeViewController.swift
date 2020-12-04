@@ -55,8 +55,10 @@ class HomeViewController: UIViewController {
          
         // music observer
         NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { (_) in
+            print("next")
             self.playNextSong()
             self.setNowPlayingView()
+            NotificationCenter.default.post(name: Notification.Name("setMusicView"), object: nil)
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(playPause), name: NSNotification.Name("playPause"), object: nil)
@@ -209,7 +211,7 @@ class HomeViewController: UIViewController {
             playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]
         } else {
             playerStatus.nowPlayIndex += 1
-            if (playerStatus.nowPlayIndex >= musicQueue.count) {
+            if (playerStatus.nowPlayIndex > musicQueue.count-1) {
                 playerStatus.nowPlayIndex = 0
             }
             playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]

@@ -314,16 +314,19 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7nw-H6-IDL">
                                 <rect key="frame" x="34" y="634" width="346" height="31"/>
                                 <color key="tintColor" name="PrimaryColor"/>
+                                <connections>
+                                    <action selector="sliderControl:" destination="Zxf-7r-rh5" eventType="valueChanged" id="vUJ-5C-mz6"/>
+                                </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvv-cM-t6R">
-                                <rect key="frame" x="36" y="673" width="41.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvv-cM-t6R">
+                                <rect key="frame" x="36" y="673" width="32" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="WhiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1s-Xo-J0Y">
-                                <rect key="frame" x="336.5" y="673" width="41.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1s-Xo-J0Y">
+                                <rect key="frame" x="346" y="673" width="32" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="WhiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -437,6 +440,8 @@
                         <outlet property="slider" destination="7nw-H6-IDL" id="5jf-iU-yiX"/>
                         <outlet property="songLabel" destination="z3J-NX-dYp" id="qdA-aR-d1t"/>
                         <outlet property="starsUIView" destination="Pf1-QS-KuI" id="PdV-5F-oeH"/>
+                        <outlet property="timePassLabel" destination="kvv-cM-t6R" id="bN4-ay-2ev"/>
+                        <outlet property="timeRemainLabel" destination="S1s-Xo-J0Y" id="xwW-DU-ESo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E3p-Cm-M0A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

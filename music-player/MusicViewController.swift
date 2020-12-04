@@ -19,6 +19,8 @@ class MusicViewController: UIViewController {
     @IBOutlet weak var singerLabel: UILabel!
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var timePassLabel: UILabel!
+    @IBOutlet weak var timeRemainLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,8 @@ class MusicViewController: UIViewController {
         initMusicImage()
         initStars()
         initSlider()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setMusicView), name: NSNotification.Name("setMusicView"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,17 +58,24 @@ class MusicViewController: UIViewController {
         slider.setThumbImage(UIImage(named: "thumb"), for: .normal)
         player.addPeriodicTimeObserver(forInterval: CMTimeMake(value:1, timescale: 1), queue: DispatchQueue.main, using: { (CMTime) in
             if let _ = playerStatus.nowPlaying, playerStatus.isPlay {
+                // set slider
                 let currentTime = player.currentTime().seconds
                 self.slider.value = Float(currentTime)
+                // set labels
+                self.timePassLabel.text = self.timeFormat(time: currentTime)
+                self.timeRemainLabel.text = "-\(self.timeFormat(time: playerStatus.duration - currentTime))"
             }
-            
         })
     }
     func setSliderMinMax() {
         slider.maximumValue = Float(playerStatus.duration)
         slider.isContinuous = true
     }
-    func setMusicView() {
+    func timeFormat(time: Double) -> String{
+        let result = Int(time).quotientAndRemainder(dividingBy: 60)
+        return "\(result.quotient):\(String(format:"%.02d", result.remainder))"
+    }
+    @objc func setMusicView() {
         musicImageView.image = UIImage(named: playerStatus.nowPlaying!.songImage)
         songLabel.text = playerStatus.nowPlaying!.songName
         singerLabel.text = playerStatus.nowPlaying!.singerName
@@ -106,4 +117,8 @@ class MusicViewController: UIViewController {
         setMusicView()
     }
     
+    @IBAction func sliderControl(_ sender: UISlider) {
+        let time = CMTime(value: CMTimeValue(sender.value), timescale: 1)
+        player.seek(to: time)
+    }
 }
