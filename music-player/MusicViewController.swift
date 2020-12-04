@@ -15,6 +15,7 @@ class MusicViewController: UIViewController {
     @IBOutlet weak var starsUIView: UIView!
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var singerLabel: UILabel!
+    @IBOutlet weak var playBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +26,9 @@ class MusicViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         // set view based on data
-        musicImageView.image = UIImage(named: playerStatus.nowPlaying!.songImage)
-        songLabel.text = playerStatus.nowPlaying!.songName
-        singerLabel.text = playerStatus.nowPlaying!.singerName
-        MusicViewController.setStarCounts(counts: playerStatus.nowPlaying!.starCounts)
-        
-        // play song
-        
+        setMusicView()
+        setPlayBtn()
     }
-    
     func initMusicImage() {
         musicView.layer.shadowOpacity = 0.4
         musicView.layer.shadowOffset = CGSize(width:0, height:4)
@@ -42,7 +37,6 @@ class MusicViewController: UIViewController {
         musicImageView.clipsToBounds = true
         musicImageView.layer.cornerRadius = 20
     }
-    
     func initStars() {
         for i in 1...5 {
             let star = StarImageView(image: UIImage(systemName: "star")!, starIndex: i)
@@ -50,6 +44,13 @@ class MusicViewController: UIViewController {
             starsUIView.addSubview(star!)
             starArray.append(star!)
         }
+    }
+    
+    func setMusicView() {
+        musicImageView.image = UIImage(named: playerStatus.nowPlaying!.songImage)
+        songLabel.text = playerStatus.nowPlaying!.songName
+        singerLabel.text = playerStatus.nowPlaying!.singerName
+        MusicViewController.setStarCounts(counts: playerStatus.nowPlaying!.starCounts)
     }
     
     static func setStarCounts(counts: Int) {
@@ -64,5 +65,22 @@ class MusicViewController: UIViewController {
 
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func playPause(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name("playPause"), object: nil)
+        setPlayBtn()
+    }
+    func setPlayBtn() {
+        if playerStatus.isPlay {
+            playBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        } else {
+            playBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        }
+    }
+    
+    @IBAction func nextSong(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name("nextSong"), object: nil)
+        setMusicView()
     }
 }

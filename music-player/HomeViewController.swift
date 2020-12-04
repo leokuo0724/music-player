@@ -58,6 +58,9 @@ class HomeViewController: UIViewController {
             self.playNextSong()
             self.setNowPlayingView()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(playPause), name: NSNotification.Name("playPause"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(nextSong), name: NSNotification.Name("nextSong"), object: nil)
     }
 
     func initTrendCards() {
@@ -111,6 +114,7 @@ class HomeViewController: UIViewController {
         nowPlayingSheet.addGestureRecognizer(gesture)
     }
     
+
     
     // click song view
     func songViewTouchAction(nextSongInfo: MusicData) {
@@ -132,7 +136,9 @@ class HomeViewController: UIViewController {
         }
     }
     @objc func toCurrentMusicPage() {
-        if let controller = storyboard?.instantiateViewController(identifier: "MusicPage") as? MusicViewController {
+        
+        if let controller = storyboard?.instantiateViewController(identifier: "MusicPage") as? MusicViewController,
+           let _ = playerStatus.nowPlaying {
             present(controller, animated: true, completion: nil) // set song
         }
     }

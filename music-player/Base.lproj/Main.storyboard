@@ -312,17 +312,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7nw-H6-IDL">
-                                <rect key="frame" x="34" y="638" width="346" height="31"/>
+                                <rect key="frame" x="34" y="634" width="346" height="31"/>
                                 <color key="tintColor" name="PrimaryColor"/>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvv-cM-t6R">
-                                <rect key="frame" x="36" y="677" width="41.5" height="20.5"/>
+                                <rect key="frame" x="36" y="673" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="WhiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1s-Xo-J0Y">
-                                <rect key="frame" x="336.5" y="677" width="41.5" height="20.5"/>
+                                <rect key="frame" x="336.5" y="673" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="WhiteColor"/>
                                 <nil key="highlightedColor"/>
@@ -335,7 +335,10 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ii4-T8-Cqf"/>
                                         </constraints>
-                                        <state key="normal" image="play.fill" catalog="system"/>
+                                        <state key="normal" image="pause.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="playPause:" destination="Zxf-7r-rh5" eventType="touchUpInside" id="vGf-2M-FGi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nrd-Uq-vDq">
                                         <rect key="frame" x="219" y="0.0" width="50" height="50"/>
@@ -343,6 +346,9 @@
                                             <constraint firstAttribute="height" constant="50" id="lF9-N5-8PY"/>
                                         </constraints>
                                         <state key="normal" image="forward.end.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="nextSong:" destination="Zxf-7r-rh5" eventType="touchUpInside" id="cRt-oB-cxP"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-2b-2JI">
                                         <rect key="frame" x="292" y="0.0" width="50" height="50"/>
@@ -401,7 +407,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="z3J-NX-dYp" secondAttribute="trailing" constant="48" id="7e9-kd-vt3"/>
                             <constraint firstItem="lkH-2i-tzi" firstAttribute="top" secondItem="3NO-oP-YHf" secondAttribute="top" constant="80" id="Auo-9X-fpJ"/>
                             <constraint firstItem="T2j-Vs-p8i" firstAttribute="top" secondItem="z3J-NX-dYp" secondAttribute="bottom" constant="14" id="BkP-Xg-ETj"/>
-                            <constraint firstItem="7nw-H6-IDL" firstAttribute="top" secondItem="T2j-Vs-p8i" secondAttribute="bottom" constant="26" id="Ga6-fy-9ne"/>
+                            <constraint firstItem="7nw-H6-IDL" firstAttribute="top" secondItem="T2j-Vs-p8i" secondAttribute="bottom" constant="22" id="Ga6-fy-9ne"/>
                             <constraint firstItem="kvv-cM-t6R" firstAttribute="top" secondItem="7nw-H6-IDL" secondAttribute="bottom" constant="9" id="HQi-VS-67I"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T2j-Vs-p8i" secondAttribute="trailing" constant="48" id="KcU-cL-aBf"/>
                             <constraint firstItem="z3J-NX-dYp" firstAttribute="top" secondItem="Pf1-QS-KuI" secondAttribute="bottom" constant="22" id="Mdh-Qx-HZA"/>
@@ -423,6 +429,7 @@
                     <connections>
                         <outlet property="musicImageView" destination="SaZ-he-v6M" id="C37-2U-jYo"/>
                         <outlet property="musicView" destination="Dtu-Kc-ahC" id="Jze-CB-Sc4"/>
+                        <outlet property="playBtn" destination="gM3-7P-M6p" id="pND-9C-aV7"/>
                         <outlet property="singerLabel" destination="T2j-Vs-p8i" id="kaC-G0-U7b"/>
                         <outlet property="songLabel" destination="z3J-NX-dYp" id="qdA-aR-d1t"/>
                         <outlet property="starsUIView" destination="Pf1-QS-KuI" id="PdV-5F-oeH"/>
@@ -437,6 +444,7 @@
         <image name="backward.end.fill" catalog="system" width="128" height="102"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="forward.end.fill" catalog="system" width="128" height="102"/>
+        <image name="pause.fill" catalog="system" width="116" height="128"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="repeat" catalog="system" width="128" height="99"/>
         <image name="shuffle" catalog="system" width="128" height="93"/>

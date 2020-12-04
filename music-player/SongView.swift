@@ -44,7 +44,6 @@ class SongCardView: UIView {
         imageView.addGestureRecognizer(gesture)
     }
     @objc private func touchAction(_ sender: UITapGestureRecognizer) {
-//        playerStatus.nowPlaying = self.songInfo
         self.touchFunc(self.songInfo!)
     }
     
