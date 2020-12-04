@@ -353,12 +353,15 @@
                                             <action selector="nextSong:" destination="Zxf-7r-rh5" eventType="touchUpInside" id="cRt-oB-cxP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-2b-2JI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-2b-2JI">
                                         <rect key="frame" x="292" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Gtc-cq-Oio"/>
                                         </constraints>
                                         <state key="normal" image="repeat" catalog="system"/>
+                                        <connections>
+                                            <action selector="songRepeat:" destination="Zxf-7r-rh5" eventType="touchUpInside" id="rUt-qz-fe2"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXF-AR-ws1">
                                         <rect key="frame" x="73" y="0.0" width="50" height="50"/>
@@ -370,12 +373,15 @@
                                             <action selector="prevSong:" destination="Zxf-7r-rh5" eventType="touchUpInside" id="f75-t4-XQA"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjz-3g-8V9">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjz-3g-8V9">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Xkl-kt-kDF"/>
                                         </constraints>
                                         <state key="normal" image="shuffle" catalog="system"/>
+                                        <connections>
+                                            <action selector="songsShuffle:" destination="Zxf-7r-rh5" eventType="touchUpInside" id="gof-f0-Iwq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -436,6 +442,8 @@
                         <outlet property="musicImageView" destination="SaZ-he-v6M" id="C37-2U-jYo"/>
                         <outlet property="musicView" destination="Dtu-Kc-ahC" id="Jze-CB-Sc4"/>
                         <outlet property="playBtn" destination="gM3-7P-M6p" id="pND-9C-aV7"/>
+                        <outlet property="repeatBtn" destination="bpc-2b-2JI" id="PNv-TR-RTa"/>
+                        <outlet property="shuffleBtn" destination="qjz-3g-8V9" id="CHw-vd-JNj"/>
                         <outlet property="singerLabel" destination="T2j-Vs-p8i" id="kaC-G0-U7b"/>
                         <outlet property="slider" destination="7nw-H6-IDL" id="5jf-iU-yiX"/>
                         <outlet property="songLabel" destination="z3J-NX-dYp" id="qdA-aR-d1t"/>

@@ -210,9 +210,11 @@ class HomeViewController: UIViewController {
         if playerStatus.nowPlaying == nil {
             playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]
         } else {
-            playerStatus.nowPlayIndex += 1
-            if (playerStatus.nowPlayIndex > musicQueue.count-1) {
-                playerStatus.nowPlayIndex = 0
+            if playerStatus.playType != "repeat" {
+                playerStatus.nowPlayIndex += 1
+                if (playerStatus.nowPlayIndex > musicQueue.count-1) {
+                    playerStatus.nowPlayIndex = 0
+                }
             }
             playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]
         }
@@ -221,9 +223,11 @@ class HomeViewController: UIViewController {
     }
     
     @objc func playPrevSong() {
-        playerStatus.nowPlayIndex -= 1
-        if (playerStatus.nowPlayIndex < 0) {
-            playerStatus.nowPlayIndex = musicQueue.count - 1
+        if playerStatus.playType != "repeat" {
+            playerStatus.nowPlayIndex -= 1
+            if (playerStatus.nowPlayIndex < 0) {
+                playerStatus.nowPlayIndex = musicQueue.count - 1
+            }
         }
         playerStatus.nowPlaying = musicQueue[playerStatus.nowPlayIndex]
         

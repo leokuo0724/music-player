@@ -21,6 +21,8 @@ class MusicViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var timePassLabel: UILabel!
     @IBOutlet weak var timeRemainLabel: UILabel!
+    @IBOutlet weak var repeatBtn: UIButton!
+    @IBOutlet weak var shuffleBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,7 @@ class MusicViewController: UIViewController {
         setMusicView()
         setPlayBtn()
         setSliderMinMax()
+        setPlayTypeBtns()
     }
     func initMusicImage() {
         musicView.layer.shadowOpacity = 0.4
@@ -81,6 +84,19 @@ class MusicViewController: UIViewController {
         singerLabel.text = playerStatus.nowPlaying!.singerName
         MusicViewController.setStarCounts(counts: playerStatus.nowPlaying!.starCounts)
     }
+    func setPlayTypeBtns() {
+        if playerStatus.playType == "repeat" {
+            repeatBtn.alpha = 1
+            shuffleBtn.alpha = 0.6
+        } else if playerStatus.playType == "suffle" {
+            repeatBtn.alpha = 0.6
+            shuffleBtn.alpha = 1
+        } else {
+            repeatBtn.alpha = 0.6
+            shuffleBtn.alpha = 0.6
+        }
+        
+    }
     
     static func setStarCounts(counts: Int) {
         starArray.forEach({
@@ -120,5 +136,26 @@ class MusicViewController: UIViewController {
     @IBAction func sliderControl(_ sender: UISlider) {
         let time = CMTime(value: CMTimeValue(sender.value), timescale: 1)
         player.seek(to: time)
+    }
+    
+    @IBAction func songRepeat(_ sender: Any) {
+        if playerStatus.playType != "repeat" {
+            playerStatus.playType = "repeat"
+        } else {
+            playerStatus.playType = "normal"
+        }
+        setPlayTypeBtns()
+    }
+    
+    
+    @IBAction func songsShuffle(_ sender: Any) {
+        if playerStatus.playType != "shuffle" {
+            playerStatus.playType = "shuffle"
+            musicQueue.shuffle()
+            print(musicQueue)
+        } else {
+            playerStatus.playType = "normal"
+        }
+        setPlayTypeBtns()
     }
 }
