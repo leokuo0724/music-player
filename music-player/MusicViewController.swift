@@ -30,7 +30,8 @@ class MusicViewController: UIViewController {
         singerLabel.text = playerStatus.nowPlaying!.singerName
         MusicViewController.setStarCounts(counts: playerStatus.nowPlaying!.starCounts)
         
-        print(playerStatus.nowPlaying!.starCounts)
+        // play song
+        
     }
     
     func initMusicImage() {

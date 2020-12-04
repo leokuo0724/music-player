@@ -9,12 +9,12 @@ import UIKit
 
 class SongCardView: UIView {
     var songInfo: MusicData?
-    let touchFunc: () -> Void
+    let touchFunc: (MusicData) -> Void
     var songImageView: UIImageView = UIImageView()
     var singerNameLabel: UILabel = UILabel()
     var songNameLabel: UILabel = UILabel()
     
-    init?(frame: CGRect, songInfo: MusicData?, touchFunc: @escaping () -> Void) {
+    init?(frame: CGRect, songInfo: MusicData?, touchFunc: @escaping (MusicData) -> Void) {
         self.songInfo = songInfo
         self.touchFunc = touchFunc
         super.init(frame: frame)
@@ -44,8 +44,8 @@ class SongCardView: UIView {
         imageView.addGestureRecognizer(gesture)
     }
     @objc private func touchAction(_ sender: UITapGestureRecognizer) {
-        playerStatus.nowPlaying = self.songInfo
-        self.touchFunc()
+//        playerStatus.nowPlaying = self.songInfo
+        self.touchFunc(self.songInfo!)
     }
     
     private func initSongNameLabel() {

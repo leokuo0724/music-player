@@ -9,5 +9,7 @@ import Foundation
 
 class PlayerStatus {
     var nowPlaying: MusicData? = nil
+    var nowPlayIndex: Int = 0
+    var isPlay: Bool = false
     var playType: String = "normal" // normal, shuffle, repeat
 }

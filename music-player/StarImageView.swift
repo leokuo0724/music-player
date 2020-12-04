@@ -30,7 +30,6 @@ class StarImageView: UIImageView {
     @objc private func touchAction(_ sender: UITapGestureRecognizer) {
         // 改資料 star 再呼叫更改 view
         playerStatus.nowPlaying!.starCounts = self.starIndex
-        print(playerStatus.nowPlaying!.starCounts)
         // 設定 music star
         MusicViewController.setStarCounts(counts: self.starIndex)
     }

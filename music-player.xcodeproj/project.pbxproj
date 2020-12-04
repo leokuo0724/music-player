@@ -20,6 +20,7 @@
 		EBF30D6F2577DD5C00D92B67 /* PlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF30D6E2577DD5C00D92B67 /* PlayerStatus.swift */; };
 		EBF30D722577E35B00D92B67 /* TopTrendMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF30D712577E35B00D92B67 /* TopTrendMusicView.swift */; };
 		EBF30D752579146100D92B67 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF30D742579146100D92B67 /* SongView.swift */; };
+		EBF30D7B25794B3300D92B67 /* Last Dance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBF30D7A25794B3200D92B67 /* Last Dance.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		EBF30D6E2577DD5C00D92B67 /* PlayerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatus.swift; sourceTree = "<group>"; };
 		EBF30D712577E35B00D92B67 /* TopTrendMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTrendMusicView.swift; sourceTree = "<group>"; };
 		EBF30D742579146100D92B67 /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
+		EBF30D7A25794B3200D92B67 /* Last Dance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Last Dance.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				EBAAF3D82576765E00919663 /* HomeViewController.swift */,
 				EBAAF3CB2576762A00919663 /* Assets.xcassets */,
 				EBAAF3CD2576762A00919663 /* LaunchScreen.storyboard */,
+				EBF30D7A25794B3200D92B67 /* Last Dance.mp3 */,
 				EBF30D642577C42D00D92B67 /* Us小時.mp3 */,
 				EBAAF3D02576762A00919663 /* Info.plist */,
 			);
@@ -145,6 +148,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF30D7B25794B3300D92B67 /* Last Dance.mp3 in Resources */,
 				EBF30D652577C42D00D92B67 /* Us小時.mp3 in Resources */,
 				EBAAF3CF2576762A00919663 /* LaunchScreen.storyboard in Resources */,
 				EBAAF3CC2576762A00919663 /* Assets.xcassets in Resources */,

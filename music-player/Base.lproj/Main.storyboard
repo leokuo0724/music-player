@@ -162,8 +162,9 @@
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wn-7w-cOo">
                                 <rect key="frame" x="42" y="782" width="330" height="72"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Us小時" translatesAutoresizingMaskIntoConstraints="NO" id="6d8-SP-79Z">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6d8-SP-79Z">
                                         <rect key="frame" x="12" y="12" width="48" height="48"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="X9U-eX-5iy"/>
                                         </constraints>
@@ -180,13 +181,19 @@
                                             <constraint firstAttribute="width" constant="34" id="uN3-mU-zbk"/>
                                         </constraints>
                                         <state key="normal" image="forward.end.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="nextSong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M4b-TW-ue9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mr0-uM-2Ox">
                                         <rect key="frame" x="230" y="19" width="34" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="34" id="qtJ-DH-5DS"/>
                                         </constraints>
-                                        <state key="normal" image="pause.fill" catalog="system"/>
+                                        <state key="normal" image="play.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="playPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mIg-xx-rEI"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdB-4u-0It">
                                         <rect key="frame" x="73" y="40" width="147" height="14.5"/>
@@ -232,6 +239,7 @@
                     <connections>
                         <outlet property="madeForUUIView" destination="yPs-6B-g40" id="mI6-rF-9Uh"/>
                         <outlet property="nowPlayingImage" destination="6d8-SP-79Z" id="aYB-UM-3wE"/>
+                        <outlet property="nowPlayingPlayBtn" destination="mr0-uM-2Ox" id="o9M-tH-75f"/>
                         <outlet property="nowPlayingSheet" destination="4wn-7w-cOo" id="QfD-d4-HBX"/>
                         <outlet property="nowPlayingSingerLabel" destination="kdB-4u-0It" id="ggo-FI-qfb"/>
                         <outlet property="nowPlayingSongLabel" destination="Smd-rW-ywp" id="C3k-0c-LJ9"/>
@@ -426,11 +434,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Us小時" width="1280" height="720"/>
         <image name="backward.end.fill" catalog="system" width="128" height="102"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="forward.end.fill" catalog="system" width="128" height="102"/>
-        <image name="pause.fill" catalog="system" width="116" height="128"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="repeat" catalog="system" width="128" height="99"/>
         <image name="shuffle" catalog="system" width="128" height="93"/>
@@ -445,6 +451,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
