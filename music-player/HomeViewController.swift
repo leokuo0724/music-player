@@ -13,10 +13,10 @@ let playerStatus = PlayerStatus()
 var musicQueue: Array<MusicData> = [
     MusicData(songName: "Last Dance", album: "愛情的盡頭", songImage: "愛情的盡頭", singerName: "伍百", year: 1996, starCounts: 5),
     MusicData(songName: "Us小時", album: "Us小時", songImage: "Us小時", singerName: "吳汶芳", year: 2016, starCounts: 3),
-//    MusicData(songName: "向晚的迷途指南", album: "向晚的迷途指南", songImage: "向晚的迷途指南", singerName: "棉花糖", year: 2014, starCounts: 2),
-//    MusicData(songName: "在名為未來的波浪裡", album: "在名為未來的波浪裡", songImage: "在名為未來的波浪裡", singerName: "原子邦妮", year: 2020),
-//    MusicData(songName: "想見你想見你想見妳", album: "想見你", songImage: "想見你想見你想見你", singerName: "八三夭", year: 2019),
-//    MusicData(songName: "重遊舊地", album: "重遊舊地", songImage: "重遊舊地", singerName: "吳汶芳", year: 2020)
+    MusicData(songName: "向晚的迷途指南", album: "向晚的迷途指南", songImage: "向晚的迷途指南", singerName: "棉花糖", year: 2014, starCounts: 2),
+    MusicData(songName: "在名為未來的波浪裡", album: "在名為未來的波浪裡", songImage: "在名為未來的波浪裡", singerName: "原子邦妮", year: 2020),
+    MusicData(songName: "想見你想見你想見你", album: "想見你", songImage: "想見你想見你想見你", singerName: "八三夭", year: 2019),
+    MusicData(songName: "重遊舊地", album: "重遊舊地", songImage: "重遊舊地", singerName: "吳汶芳", year: 2020)
 ]
 var recentlyPlayedArray: Array<MusicData?> = [ nil, nil, nil ]
 
@@ -38,11 +38,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var nowPlayingPlayBtn: UIButton!
     
     let topTrendSingers: Array<TopSinger> = [
-        TopSinger(singerName: "吳汶芳", imageName: "Us小時"),
-        TopSinger(singerName: "吳汶芳", imageName: "Us小時"),
-        TopSinger(singerName: "吳汶芳", imageName: "Us小時"),
-        TopSinger(singerName: "吳汶芳", imageName: "Us小時"),
-        TopSinger(singerName: "吳汶芳", imageName: "Us小時"),
+        TopSinger(singerName: "吳汶芳", imageName: "吳汶芳"),
+        TopSinger(singerName: "原子邦妮", imageName: "原子邦妮"),
+        TopSinger(singerName: "八三夭樂團", imageName: "八三夭樂團"),
+        TopSinger(singerName: "韋禮安", imageName: "韋禮安"),
     ]
     
     override func viewDidLoad() {
@@ -128,7 +127,7 @@ class HomeViewController: UIViewController {
         
         // set touchable
         nowPlayingSheet.isUserInteractionEnabled = true
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.toCurrentMusicPage))
+        let gesture = UITapGestureRecognizer(target: nowPlayingSheet, action: #selector(self.toCurrentMusicPage))
         nowPlayingSheet.addGestureRecognizer(gesture)
     }
     

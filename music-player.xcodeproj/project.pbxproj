@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB03FF7D257A7B040005E9A8 /* 向晚的迷途指南.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB03FF7C257A7B040005E9A8 /* 向晚的迷途指南.mp3 */; };
+		EB03FF80257A7B4D0005E9A8 /* 在名為未來的波浪裡.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB03FF7F257A7B4D0005E9A8 /* 在名為未來的波浪裡.mp3 */; };
+		EB03FF83257A7BB00005E9A8 /* 想見你想見你想見你.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB03FF82257A7BB00005E9A8 /* 想見你想見你想見你.mp3 */; };
+		EB03FF86257A7C330005E9A8 /* 重遊舊地.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB03FF85257A7C330005E9A8 /* 重遊舊地.mp3 */; };
 		EBAAF3C32576762700919663 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAF3C22576762700919663 /* AppDelegate.swift */; };
 		EBAAF3C52576762700919663 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAF3C42576762700919663 /* SceneDelegate.swift */; };
 		EBAAF3CA2576762700919663 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBAAF3C82576762700919663 /* Main.storyboard */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB03FF7C257A7B040005E9A8 /* 向晚的迷途指南.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "向晚的迷途指南.mp3"; sourceTree = "<group>"; };
+		EB03FF7F257A7B4D0005E9A8 /* 在名為未來的波浪裡.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "在名為未來的波浪裡.mp3"; sourceTree = "<group>"; };
+		EB03FF82257A7BB00005E9A8 /* 想見你想見你想見你.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "想見你想見你想見你.mp3"; sourceTree = "<group>"; };
+		EB03FF85257A7C330005E9A8 /* 重遊舊地.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "重遊舊地.mp3"; sourceTree = "<group>"; };
 		EBAAF3BF2576762700919663 /* music-player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "music-player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAAF3C22576762700919663 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBAAF3C42576762700919663 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +94,10 @@
 				EBAAF3CD2576762A00919663 /* LaunchScreen.storyboard */,
 				EBF30D7A25794B3200D92B67 /* Last Dance.mp3 */,
 				EBF30D642577C42D00D92B67 /* Us小時.mp3 */,
+				EB03FF7C257A7B040005E9A8 /* 向晚的迷途指南.mp3 */,
+				EB03FF82257A7BB00005E9A8 /* 想見你想見你想見你.mp3 */,
+				EB03FF7F257A7B4D0005E9A8 /* 在名為未來的波浪裡.mp3 */,
+				EB03FF85257A7C330005E9A8 /* 重遊舊地.mp3 */,
 				EBAAF3D02576762A00919663 /* Info.plist */,
 			);
 			path = "music-player";
@@ -149,9 +161,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF30D7B25794B3300D92B67 /* Last Dance.mp3 in Resources */,
+				EB03FF80257A7B4D0005E9A8 /* 在名為未來的波浪裡.mp3 in Resources */,
 				EBF30D652577C42D00D92B67 /* Us小時.mp3 in Resources */,
 				EBAAF3CF2576762A00919663 /* LaunchScreen.storyboard in Resources */,
+				EB03FF7D257A7B040005E9A8 /* 向晚的迷途指南.mp3 in Resources */,
+				EB03FF83257A7BB00005E9A8 /* 想見你想見你想見你.mp3 in Resources */,
 				EBAAF3CC2576762A00919663 /* Assets.xcassets in Resources */,
+				EB03FF86257A7C330005E9A8 /* 重遊舊地.mp3 in Resources */,
 				EBAAF3CA2576762700919663 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
